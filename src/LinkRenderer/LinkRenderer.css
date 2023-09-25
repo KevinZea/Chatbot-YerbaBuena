@@ -1,0 +1,7 @@
+.enlaces{
+    color: purple;
+    text-decoration: none;
+}
+.enlaces:hover{
+    cursor: pointer;
+}

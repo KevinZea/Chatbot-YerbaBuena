@@ -1,0 +1,43 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 20px;
+}
+.popup-text{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.popup-text p{
+    margin: 10px;
+}
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+}
+
+.close-button:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.add-button {
+    display: block;
+    margin: auto;
+    border-radius: 15px;
+    padding: 5px;
+    margin-top: 20px;
+}
+.add-button:hover{
+    cursor: pointer;
+}
