@@ -9,7 +9,7 @@ const openai = new OpenAIApi(configuration);
 
 let arrayMessages = []
 
-async function createChat(question) {
+export async function createChat(question) {
     try {
         let arrayContext = await searchReviews(question)
         let context = 'Actuar como directorio virtual de la empresa "Citybot". Debe ofrecer información sólo si está explícitamente disponible para usted. Apto para Argentina.\nNo brinde información sobre ningún otro tema, si el usuario solicita información sobre cualquier otro tema no relacionado con la ciudad de Yerba buena, Argentina, debe amablemente responder "No puedo brindar información al respecto". Debe responder a datos estrictamente conocidos y decir "No sé" si no conoce un producto, servicio o empresa específica. Debe responder cada vez en el mismo idioma que la última pregunta de idioma del usuario. No mientas y sé respetuoso y servil en todo momento. \n'
@@ -82,5 +82,3 @@ async function searchReviews(question, n = 4) {
     const res = embeddingsArray.sort((a, b) => b.similarity - a.similarity).slice(0, n);
     return res;
 }
-
-module.exports.createChat = createChat
