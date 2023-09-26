@@ -45,8 +45,7 @@ function App() {
   return (
     <div className='app'>
       <nav className='navbar'>
-        <h1>Citybot</h1>
-        <img src={logo} width={30} height={30}></img>
+        <h1>El Asesor</h1>
       </nav>
       <div className='chat'>
         {chats.length < 1 ? (
@@ -72,14 +71,14 @@ function App() {
                 Puedes iniciar una conversación o probar los siguientes ejemplos:
               </p>
               <div className='chat-baner-info-buttons'>
-                <button onClick={(e) => { setPrompt("5 cosas para hacer en Filandia") }}>
-                  5 cosas para hacer en Filandia
+                <button onClick={(e) => { setPrompt("5 cosas para hacer en Yerbabuena") }}>
+                  5 cosas para hacer en Yerbabuena
                 </button>
-                <button onClick={(e) => { setPrompt("¿Que comer en Santa Rosa de Cabal?") }}>
-                  ¿Que comer en Santa Rosa de Cabal? 
+                <button onClick={(e) => { setPrompt("¿Que comer en Yerbabuena?") }}>
+                  ¿Que comer en Yerbabuena? 
                 </button>
-                <button onClick={(e) => { setPrompt("¿Como llegar al Valle del Cocora?") }}>
-                  ¿Como llegar al Valle del Cocora?
+                <button onClick={(e) => { setPrompt("¿Como llegar a Yerbabuena?") }}>
+                  ¿Como llegar a Yerbabuena?
                 </button>
               </div>
 
@@ -113,7 +112,7 @@ function App() {
         }
         <div className='chat-input'>
           <input type='text'
-            placeholder='Préguntale a Citybot...'
+            placeholder='Préguntale al Asesor...'
             onChange={(e) => { promptHandle(e) }}
             value={prompt}
             onKeyDown={(e) => { Keydownhandle(e) }}

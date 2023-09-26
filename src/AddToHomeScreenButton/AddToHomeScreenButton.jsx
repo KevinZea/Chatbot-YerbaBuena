@@ -42,7 +42,7 @@ const AddToHomeScreenButton = () => {
             X
           </button>
           <div className='popup-text'>
-            <p>Agrega Citybot
+            <p>Agrega a tu Asesor
               a tu pantalla de inicio.
             </p>
           </div>
