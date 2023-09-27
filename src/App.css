@@ -45,6 +45,7 @@ body {
 
 .chat-baner {
   display: flex;
+  flex-direction: column;
   background-color: #fafafa;
   justify-content: center;
   margin-top: 20px;
@@ -56,15 +57,18 @@ body {
 
 .chat-baner-info {
   width: 100%;
-  height: 430px;
-  margin: 10px;
-  font-size: 20px;
-  padding-left: 50px;
-  padding-right: 30px;
-  background-image: url('./resources/espacio1.jpeg');
+  height: 215px;
+  /* margin: 10px; */
+  font-size: 14px;
+  /* padding-left: 50px;
+  padding-right: 30px; */
+  background-color: rgb(241, 99, 99);
   color: white;
-  -webkit-text-stroke: 0.5px;
-  -webkit-text-stroke-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 .chat-baner-info span {
@@ -84,7 +88,14 @@ body {
   padding-right: 10px;
   padding-left: 10px;
 }
-
+.chat-baner-publi{
+  width: 100%;
+  height: 250px;
+}
+.chat-baner-publi img{
+  width: 100%;
+  height: 100%;
+}
 .chat-asistent {
   width: 97%;
   display: flex;
@@ -95,6 +106,9 @@ body {
   border: 2px solid black;
   border-radius: 10px;
 
+}
+.chat-asistent img{
+  padding-top: 5px;
 }
 
 .chat-asistent span {
@@ -138,9 +152,11 @@ body {
 }
 
 .chat-input {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 10px;
 }
 
 .chat-input input {
@@ -158,7 +174,11 @@ body {
   background-color: rgb(105, 60, 122);
   color: #fafafa;
   border: 2px solid black;
+  
 }
+
+
+
 
 @media(max-width:600px) {
   .chat {

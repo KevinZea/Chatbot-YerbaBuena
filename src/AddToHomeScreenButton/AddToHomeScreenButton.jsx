@@ -38,17 +38,20 @@ const AddToHomeScreenButton = () => {
     <>
       {showPopup && (
         <div className="popup">
-          <button className="close-button" onClick={handleClose}>
-            X
-          </button>
           <div className='popup-text'>
-            <p>Agrega a tu Asesor
+            <p>Agrega a el Asesor
               a tu pantalla de inicio.
             </p>
           </div>
-          <button className="add-button" onClick={handleClick}>
-            Agregar
-          </button>
+          <div className='btns'>
+            <button className="add-button" onClick={handleClick}>
+              Agregar
+            </button>
+            <button className="close-button" onClick={handleClose}>
+              Más Tarde
+            </button>
+
+          </div>
         </div>
       )}
     </>

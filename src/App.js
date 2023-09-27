@@ -5,6 +5,7 @@ import { createChat } from './chat';
 import LinkRenderer from './LinkRenderer/LinkRenderer';
 import AddToHomeScreenButton from './AddToHomeScreenButton/AddToHomeScreenButton';
 import logo from './resources/logo.png'
+import space from './resources/espacio1.jpeg'
 
 function App() {
   const [chats, setChats] = useState([])
@@ -26,7 +27,6 @@ function App() {
       chats.pop()
       setChats([...chats])
       stateChats(response)
-
       // console.log(chats)
     }
   }
@@ -56,14 +56,12 @@ function App() {
             </div> */}
             <div className='chat-baner-info'>
               <span>
-                ¡Bienvenido a CityBot!
+                ¡Bienvenido a El Asesor!
               </span>
               <p>
-                Tu asistente virtual de viajes.
+                Tu asistente virtual.
                 <br></br>
-                Aquí encontrarás recomendaciones sobre hotelería, gastronomía y servicios turísticos del eje cafetero.
-                <br></br>
-                También puedes ingresar a nuestra guia web <a href='https://citybot.info/' target='_blank'>citybot</a>
+                Aquí encontrarás recomendaciones e información comercial de la ciudad de Yerba Buena. 
                 <br></br>
                 <br></br>
                 Para hacer buen uso del chatbot, recuerda hacer preguntas de manera exacta e indicando siempre el destino.
@@ -75,13 +73,16 @@ function App() {
                   5 cosas para hacer en Yerbabuena
                 </button>
                 <button onClick={(e) => { setPrompt("¿Que comer en Yerbabuena?") }}>
-                  ¿Que comer en Yerbabuena? 
+                  ¿Que comer en Yerbabuena?
                 </button>
                 <button onClick={(e) => { setPrompt("¿Como llegar a Yerbabuena?") }}>
                   ¿Como llegar a Yerbabuena?
                 </button>
               </div>
 
+            </div>
+            <div className='chat-baner-publi'>
+              <img src={space}></img>
             </div>
           </div>
 
