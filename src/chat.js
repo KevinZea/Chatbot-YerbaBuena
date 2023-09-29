@@ -12,7 +12,7 @@ let arrayMessages = []
 export async function createChat(question) {
     try {
         let arrayContext = await searchReviews(question)
-        let context = 'Actuar como directorio virtual de la empresa "El Asesor". Debe ofrecer información sólo si está explícitamente disponible para usted. Apto para Argentina.\nNo brinde información sobre ningún otro tema, si el usuario solicita información sobre cualquier otro tema no relacionado con la ciudad de Yerba buena, Argentina, debe amablemente responder "No puedo brindar información al respecto". Debe responder a datos estrictamente conocidos y decir "No sé" si no conoce un producto, servicio o empresa específica. Debe responder cada vez en el mismo idioma que la última pregunta de idioma del usuario. No mientas y sé respetuoso y servil en todo momento. \n'
+        let context = 'Actuar como directorio virtual de la empresa "El Asesor". Debe ofrecer toda la información sólo si está explícitamente disponible para usted. Apto para Argentina.\nNo brinde información sobre ningún otro tema, si el usuario solicita información sobre cualquier otro tema no relacionado con la ciudad de Yerba buena, Argentina, debe amablemente responder "No puedo brindar información al respecto". Debe responder a datos estrictamente conocidos y decir "No sé" si no conoce un producto, servicio o empresa específica. Debe responder cada vez en el mismo idioma que la última pregunta de idioma del usuario. No mientas y sé respetuoso y servil en todo momento. \n'
 
         for (let obj of arrayContext) {
             context = context.concat(obj.text + "\n")
@@ -21,13 +21,17 @@ export async function createChat(question) {
         let system = { role: "system", content: context }
         let user = { role: "user", content: question }
 
-        for (let i = 0; i<arrayMessages.length; i++){
-            if(arrayMessages[i].role === "system"){
-                arrayMessages.splice(i, 1)
+        //elimina elcontexto duplicado y deja los ultimos dos recientes
+        for (let i = 0; i < arrayMessages.length; i++) {
+            if (arrayMessages[i].role === "system") {
+                const duplicados = arrayMessages.filter((item) => item.role === "system")
+                if(duplicados.length >= 2){
+                    arrayMessages.shift()
+                }
             }
         }
 
-        arrayMessages.push(system)
+        arrayMessages.unshift(system)
         arrayMessages.push(user)
         const completion = await openai.createChatCompletion({
             model: 'gpt-3.5-turbo', //-0613
@@ -37,6 +41,7 @@ export async function createChat(question) {
         const message = completion.data.choices[0].message
         arrayMessages.push(message)
         // console.log(message.content)
+        console.log(arrayMessages)
         return message
 
     } catch (error) {
@@ -72,7 +77,7 @@ async function getEmbedding(text) {
     return response.data.data[0].embedding;
 }
 // responde con un arreglo los resultados mas parecidos
-async function searchReviews(question, n = 4) {
+async function searchReviews(question, n = 3) {
 
     const embedding = await getEmbedding(question);
     embeddingsArray.forEach(obj => {

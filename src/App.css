@@ -105,15 +105,12 @@ body {
   background-color: #fafafa;
   border: 2px solid black;
   border-radius: 10px;
+  padding: 5px;
 
-}
-.chat-asistent img{
-  padding-top: 5px;
 }
 
 .chat-asistent span {
   width: 90%;
-  padding: 5px;
   color: black;
   border-radius: 10px;
   /* text-overflow: scroll; */
