@@ -229,7 +229,7 @@ body {
 
   .chat-input {
     position: fixed;
-    top: 91vh;
+    top: 86vh;
   }
   .chat-input input{
     width: 90%;
