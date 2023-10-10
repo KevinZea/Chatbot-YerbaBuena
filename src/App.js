@@ -6,6 +6,9 @@ import LinkRenderer from './LinkRenderer/LinkRenderer';
 import AddToHomeScreenButton from './AddToHomeScreenButton/AddToHomeScreenButton';
 // import logo from './resources/logo.png'
 import space from './resources/espacio1.jpeg'
+import space2 from './resources/space2.jpg'
+import space3 from './resources/space3.jpg'
+import space4 from './resources/space4.jpg'
 
 function App() {
   const [chats, setChats] = useState([])
@@ -82,7 +85,30 @@ function App() {
 
             </div>
             <div className='chat-baner-publi'>
-              <img src={space}></img>
+              <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src={space} class="d-block w-100" alt="..."/>
+                  </div>
+                  <div class="carousel-item">
+                    <img src={space2} class="d-block w-100" alt="..."/>
+                  </div>
+                  <div class="carousel-item">
+                    <img src={space3} class="d-block w-100" alt="..."/>
+                  </div>
+                  <div class="carousel-item">
+                    <img src={space4} class="d-block w-100" alt="..."/>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
           </div>
 
