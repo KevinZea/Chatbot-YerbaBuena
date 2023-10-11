@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { createChat } from './chat';
 import LinkRenderer from './LinkRenderer/LinkRenderer';
@@ -13,6 +13,7 @@ import space4 from './resources/space4.jpg'
 function App() {
   const [chats, setChats] = useState([])
   const [prompt, setPrompt] = useState('')
+  const chatContainerRef = useRef(null);
 
   function promptHandle(e) {
     setPrompt(e.target.value)
@@ -43,12 +44,24 @@ function App() {
       sendMessages(e)
     }
   }
-
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      scrollToBottom();
+    }
+  }, [chats]);
+  const scrollToBottom = () => {
+    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+  };
 
   return (
     <div className='app'>
       <nav className='navbar'>
         <h1>El Asesor</h1>
+        <div className='navbar-menu'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-menu-down" viewBox="0 0 16 16">
+            <path d="M7.646.146a.5.5 0 0 1 .708 0L10.207 2H14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h3.793L7.646.146zM1 7v3h14V7H1zm14-1V4a1 1 0 0 0-1-1h-3.793a1 1 0 0 1-.707-.293L8 1.207l-1.5 1.5A1 1 0 0 1 5.793 3H2a1 1 0 0 0-1 1v2h14zm0 5H1v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zM2 4.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+          </svg>
+        </div>
       </nav>
       <div className='chat'>
         {chats.length < 1 ? (
@@ -57,47 +70,21 @@ function App() {
               <img src={logo} width={30} height={30}></img>
 
             </div> */}
-            <div className='chat-baner-info'>
-              <span>
-                ¡Bienvenido a El Asesor!
-              </span>
-              <p>
-                Tu asistente virtual.
-                <br></br>
-                Aquí encontrarás recomendaciones e información comercial de la ciudad de Yerba Buena.
-                <br></br>
-                <br></br>
-                Para hacer buen uso del chatbot, recuerda hacer preguntas de manera exacta e indicando siempre el destino.
-                <br></br>
-                Puedes iniciar una conversación o probar los siguientes ejemplos:
-              </p>
-              <div className='chat-baner-info-buttons'>
-                <button onClick={(e) => { setPrompt("5 cosas para hacer en Yerbabuena") }}>
-                  5 cosas para hacer en Yerbabuena
-                </button>
-                <button onClick={(e) => { setPrompt("¿Que comer en Yerbabuena?") }}>
-                  ¿Que comer en Yerbabuena?
-                </button>
-                <button onClick={(e) => { setPrompt("¿Como llegar a Yerbabuena?") }}>
-                  ¿Como llegar a Yerbabuena?
-                </button>
-              </div>
-
-            </div>
+            
             <div className='chat-baner-publi'>
               <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src={space} class="d-block w-100" alt="..."/>
+                    <img src={space} class="d-block w-100" alt="..." />
                   </div>
                   <div class="carousel-item">
-                    <img src={space2} class="d-block w-100" alt="..."/>
+                    <img src={space2} class="d-block w-100" alt="..." />
                   </div>
                   <div class="carousel-item">
-                    <img src={space3} class="d-block w-100" alt="..."/>
+                    <img src={space3} class="d-block w-100" alt="..." />
                   </div>
                   <div class="carousel-item">
-                    <img src={space4} class="d-block w-100" alt="..."/>
+                    <img src={space4} class="d-block w-100" alt="..." />
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -110,11 +97,36 @@ function App() {
                 </button>
               </div>
             </div>
+
+            <div className='chat-baner-info'>
+              <span>
+                ¡Bienvenido a El Asesor!
+              </span>
+              <p>
+                Tu asistente virtual.
+                <br></br>
+                Aquí encontrarás recomendaciones e información comercial de la ciudad de Yerba Buena.
+                <br></br>
+                <br></br>
+                Puedes iniciar una conversación o probar los siguientes ejemplos:
+              </p>
+              <div className='chat-baner-info-buttons'>
+                
+                <button onClick={(e) => { setPrompt("¿Que comer en Yerbabuena?") }}>
+                  ¿Que comer en Yerbabuena?
+                </button>
+                <button onClick={(e) => { setPrompt("¿Donde puedo hacer senderismo?") }}>
+                  ¿Donde puedo hacer senderismo?
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
         ) :
 
-          <div className='chat-messages'>
+          <div className='chat-messages' ref={chatContainerRef}>
             {
               chats.length >= 1 && (
                 chats.map((c) => {
