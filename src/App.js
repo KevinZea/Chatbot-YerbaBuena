@@ -5,10 +5,7 @@ import { createChat } from './chat';
 import LinkRenderer from './LinkRenderer/LinkRenderer';
 import AddToHomeScreenButton from './AddToHomeScreenButton/AddToHomeScreenButton';
 // import logo from './resources/logo.png'
-import space from './resources/espacio1.jpeg'
-import space2 from './resources/space2.jpg'
-import space3 from './resources/space3.jpg'
-import space4 from './resources/space4.jpg'
+import space from './resources/portada.png'
 
 function App() {
   const [chats, setChats] = useState([])
@@ -58,8 +55,8 @@ function App() {
       <nav className='navbar'>
         <h1>El Asesor</h1>
         <div className='navbar-menu'>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-menu-down" viewBox="0 0 16 16">
-            <path d="M7.646.146a.5.5 0 0 1 .708 0L10.207 2H14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h3.793L7.646.146zM1 7v3h14V7H1zm14-1V4a1 1 0 0 0-1-1h-3.793a1 1 0 0 1-.707-.293L8 1.207l-1.5 1.5A1 1 0 0 1 5.793 3H2a1 1 0 0 0-1 1v2h14zm0 5H1v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zM2 4.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
           </svg>
         </div>
       </nav>
@@ -70,21 +67,12 @@ function App() {
               <img src={logo} width={30} height={30}></img>
 
             </div> */}
-            
+
             <div className='chat-baner-publi'>
               <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src={space} class="d-block w-100" alt="..." />
-                  </div>
-                  <div class="carousel-item">
-                    <img src={space2} class="d-block w-100" alt="..." />
-                  </div>
-                  <div class="carousel-item">
-                    <img src={space3} class="d-block w-100" alt="..." />
-                  </div>
-                  <div class="carousel-item">
-                    <img src={space4} class="d-block w-100" alt="..." />
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -105,13 +93,14 @@ function App() {
               <p>
                 Tu asistente virtual.
                 <br></br>
+                <br></br>
                 Aquí encontrarás recomendaciones e información comercial de la ciudad de Yerba Buena.
                 <br></br>
                 <br></br>
                 Puedes iniciar una conversación o probar los siguientes ejemplos:
               </p>
               <div className='chat-baner-info-buttons'>
-                
+
                 <button onClick={(e) => { setPrompt("¿Que comer en Yerbabuena?") }}>
                   ¿Que comer en Yerbabuena?
                 </button>
