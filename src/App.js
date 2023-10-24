@@ -5,12 +5,43 @@ import { createChat } from './chat';
 import LinkRenderer from './LinkRenderer/LinkRenderer';
 import AddToHomeScreenButton from './AddToHomeScreenButton/AddToHomeScreenButton';
 // import logo from './resources/logo.png'
-import space from './resources/portada.png'
+import space from './resources/portada.webp'
+import banner from './resources/banner1.webp'
+import bannerDos from './resources/banner2.webp'
+import bannerTres from './resources/banner3.webp'
 
 function App() {
   const [chats, setChats] = useState([])
   const [prompt, setPrompt] = useState('')
   const chatContainerRef = useRef(null);
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+  const [imageFixed, setImageFixed] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Retirar el controlador de eventos al desmontar el componente
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   function promptHandle(e) {
     setPrompt(e.target.value)
@@ -50,6 +81,20 @@ function App() {
     chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
   };
 
+  const handleScroll = () => {
+    console.log(window.scrollY)
+    // Verificar la posición de desplazamiento y aplicar la clase CSS según sea necesario
+    if (window.scrollY > 10) {
+      setImageFixed(true);
+      console.log("se cumple")
+    } else {
+      setImageFixed(false);
+    }
+  };
+
+
+  const smallScreen = windowSize.width < 768
+
   return (
     <div className='app'>
       <nav className='navbar'>
@@ -75,14 +120,6 @@ function App() {
                     <img src={space} class="d-block w-100" alt="..." />
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
               </div>
             </div>
 
@@ -116,6 +153,23 @@ function App() {
         ) :
 
           <div className='chat-messages' ref={chatContainerRef}>
+            {smallScreen && (
+              <div className={imageFixed ? 'slider' : 'carrusel'}>
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src={banner} class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                      <img src={bannerDos} class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                      <img src={bannerTres} class="d-block w-100" alt="..." />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
             {
               chats.length >= 1 && (
                 chats.map((c) => {

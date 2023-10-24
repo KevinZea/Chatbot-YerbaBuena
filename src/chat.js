@@ -41,7 +41,7 @@ export async function createChat(question) {
         const message = completion.data.choices[0].message
         arrayMessages.push(message)
         // console.log(message.content)
-        console.log(arrayMessages)
+        // console.log(arrayMessages)
         return message
 
     } catch (error) {

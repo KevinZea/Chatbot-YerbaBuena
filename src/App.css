@@ -33,6 +33,8 @@ body {
 
 .navbar h1 {
   font-size: 20px;
+  position: relative;
+  left: 10px;
 }
 .navbar-menu{
   position: relative;
@@ -186,13 +188,17 @@ body {
   body{
     background-repeat: space;
   }
+  .navbar-menu{
+    position: relative;
+    left: 150px;
+  }
   .chat {
     width: 100%;
     height: 100%;
   }
 
   .chat-messages {
-    width: 95%;
+    width: 100%;
     height: 84vh;
     background-color: rgb(241, 99, 99);
     word-break: break-word;
@@ -223,10 +229,11 @@ body {
     text-align: start;
     padding: 10px;
     font-size: 16px;
+    margin-top: 20%;
   }
   .chat-baner-info span{
     position: relative;
-    right: 20%;
+    right: 25%;
   }
 
   .chat-baner-info-buttons button {
@@ -246,11 +253,14 @@ body {
   }
   .chat-input button{
     width: 10%;
+    height: 41px;
     margin: 0;
   }
   .chat-baner-publi{
     width: 105%;
     height: auto;
   }  
-
+  .slider{
+    position: fixed;
+  }
 }
