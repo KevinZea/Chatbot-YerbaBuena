@@ -82,11 +82,9 @@ function App() {
   };
 
   const handleScroll = () => {
-    console.log(window.scrollY)
     // Verificar la posición de desplazamiento y aplicar la clase CSS según sea necesario
     if (window.scrollY > 10) {
       setImageFixed(true);
-      console.log("se cumple")
     } else {
       setImageFixed(false);
     }
