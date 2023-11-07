@@ -6,9 +6,11 @@ import LinkRenderer from './LinkRenderer/LinkRenderer';
 import AddToHomeScreenButton from './AddToHomeScreenButton/AddToHomeScreenButton';
 // import logo from './resources/logo.png'
 import space from './resources/portada.webp'
-import banner from './resources/banner1.webp'
-import bannerDos from './resources/banner2.webp'
-import bannerTres from './resources/banner3.webp'
+// import banner from './resources/banner1.webp'
+// import bannerDos from './resources/banner2.webp'
+// import bannerTres from './resources/banner3.webp'
+
+import icono from './resources/icono.webp'
 
 function App() {
   const [chats, setChats] = useState([])
@@ -152,21 +154,22 @@ function App() {
 
           <div className='chat-messages' ref={chatContainerRef}>
             {smallScreen && (
-              <div className={imageFixed ? 'slider' : 'carrusel'}>
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src={banner} class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                      <img src={bannerDos} class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                      <img src={bannerTres} class="d-block w-100" alt="..." />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div></div>
+              // <div className={imageFixed ? 'slider' : 'carrusel'}>
+              //   <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+              //     <div class="carousel-inner">
+              //       <div class="carousel-item active">
+              //         <img src={banner} class="d-block w-100" alt="..." />
+              //       </div>
+              //       <div class="carousel-item">
+              //         <img src={bannerDos} class="d-block w-100" alt="..." />
+              //       </div>
+              //       <div class="carousel-item">
+              //         <img src={bannerTres} class="d-block w-100" alt="..." />
+              //       </div>
+              //     </div>
+              //   </div>
+              // </div>
             )}
             {
               chats.length >= 1 && (
@@ -174,10 +177,9 @@ function App() {
                   return (
                     c.role === "assistant" ? (
                       <div className='chat-asistent'>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-compass" viewBox="0 0 16 16">
-                          <path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-                          <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
-                        </svg>
+                        <div className='chat-asistent-icon'>
+                          <img src={icono}></img>
+                        </div>
                         <span><LinkRenderer text={c.content} /></span>
                       </div>
                     ) :
